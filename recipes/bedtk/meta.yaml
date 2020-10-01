@@ -1,0 +1,35 @@
+{% set version = "0.0_r25_dirty" %}
+{% set sha256 = "c45f32730238629acf608155156857878a4fa40bc48688f333ea95642950cac6" %}
+
+package:
+  name: bedtk
+  version: {{ version }}
+
+source:
+  # should be updated to point to a real release when one is published 
+  url: https://github.com/lh3/bedtk/tarball/ff9276d0b5b12cae9e27303ae1571aeca70ed302
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - zlib
+  run:
+    - zlib
+test:
+  commands:
+    - bedtk 2>&1 | grep bedtk -q
+
+about:
+  home: https://github.com/lh3/bedtk
+  license: MIT
+  license_file: LICENSE
+  summary: Bedtk is a set of simple tools to process BED files
+
+extra:
+  identifiers:
+    - biotools:bedtk
